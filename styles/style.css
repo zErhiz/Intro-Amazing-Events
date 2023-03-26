@@ -509,3 +509,27 @@ text-align: center;
   }
  
 }
+@media screen  and (min-width: 320px) and (max-width: 550px)
+{
+  .titulo22
+  {
+    font-size: 1rem;
+  }
+  .titulo33
+  {
+    font-size: 1rem;
+  }
+  .titulocontenedor
+  {
+    text-align: center;
+    height: 90%;
+    width: 90%;
+    
+  }
+ 
+ .imagencontenedor
+ {
+  display: none;
+ }
+ 
+}
