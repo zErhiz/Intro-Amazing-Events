@@ -5,14 +5,16 @@
 }
 .imagenlogo
 {
-  width: 13vw;
+  width: 12vw;
 }
  .navbar-toggler-icon {
   background-color: #fff;
 } 
 .navegador1 {
   padding: 1rem;
-  
+  height: 9vh;
+  display: flex;
+  align-items: center;
 }
 header img {
   width: 20vw;
@@ -156,28 +158,16 @@ header img {
 } 
 .section-1 {
   display: flex;
-  justify-content: space-around;
-  padding: 2rem;
-}
-.section-2 {
-  display: flex;
-  justify-content: space-around;
-  padding: 2rem;
-}
-.section-3 {
-  display: flex;
-  justify-content: space-around;
-  padding: 2rem;
-}
-.section-4 {
-  display: flex;
-  justify-content: space-around;
-  padding: 2rem;
-}
-.section-5 {
-  display: flex;
   justify-content: space-evenly;
+ 
+  flex-wrap: wrap;
   padding: 2rem;
+  gap: 2rem;
+}
+.NoCards
+{
+  color: white;
+ margin-top: 2rem;
 }
 .section-0 {
   display: flex;
@@ -196,7 +186,7 @@ footer {
 
 main {
   background: radial-gradient(circle at 10% 20%, rgb(0, 0, 0) 0%, rgb(64, 64, 64) 90.2%);
-
+min-height: 100vh;
   
 }
 .formulario2 {
@@ -206,6 +196,16 @@ color: #fff;
   height: 100vh;
   align-items: stretch;
   padding: 5rem;
+  border-radius: 20px;
+  
+height: 60vh;
+background: linear-gradient(to right, #434343 0%, black 100%);
+width: 50vw;
+}
+.formulario22{
+  display: flex;
+  justify-content: center;
+  
 }
 #name {
   width: 100%;
@@ -219,6 +219,10 @@ color: #fff;
 }
 #submit {
   width: 10%;
+  border-radius: 20px;
+  background-color: grey;
+  color: white;
+  font-weight: bold;
 }
 .botonsubmit {
   display: flex;
@@ -241,12 +245,11 @@ color: #fff;
   align-items: center;
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0.073) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
 }
-.imagencontenedor {
+.imagen-fondo {
   border: 2px solid black;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 5);
   width: 38vw;
   height: 60vh;
-  background-image: url(../assets/img/books.jpg);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -353,7 +356,7 @@ width: 25vw;
   .navegador1
   {
     justify-content: center;
-  
+    height: 12vh;
     width: 100%;
   }
   .navegador1 a {
@@ -370,35 +373,13 @@ width: 25vw;
     align-items: center;
   }
   .section-1 {
-    flex-direction: column;
-    align-items: center;
+  
     gap: 2rem;
   }
-  .section-2 {
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
+  #submit {
+    width: 15%;
   }
-  .section-2 {
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-  }
-  .section-3 {
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-  }
-  .section-4 {
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-  }
-  .section-5 {
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-  }
+ 
   .formulario1 {
     display: flex;
     flex-direction: column;
@@ -411,12 +392,18 @@ width: 25vw;
     padding: 1rem;
     text-align: center;
   }
+  .formulario2
+  {
+    width: 100%;
+    height: 100%;
+  }
 }
 @media screen and (min-width: 320px) and (max-width: 650px) {
   .navegador1
   {
    
     justify-content: center;
+   height: 12vh;
     width: 100%;
   }
   .navegador1 a {
@@ -431,8 +418,9 @@ width: 25vw;
     align-items: center;
   }
   .section-1 {
+    display: flex;
     flex-direction: column;
-    align-items: center;
+    align-content: center;
     gap: 2rem;
   }
   .section-2 {
@@ -459,6 +447,11 @@ width: 25vw;
   .formulario1 {
     display: flex;
     flex-direction: column;
+  }
+  .formulario2
+  {
+    width: 100%;
+    height: 100%;
   }
   #submit {
     width: 20vw;
@@ -513,16 +506,66 @@ width: 30vw;
   }
   .titulocontenedor {
     text-align: center;
-    height: 90%;
-    width: 90%;
+    height: 95%;
+    width: 95%;
+    
   }
-
-  .imagencontenedor {
+  .letras
+  {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+  }
+  .titulo22
+  {
+    font-size: 1rem;
+  }
+.letras h4
+{
+  font-size: 0.9rem;
+}
+  .imagen-fondo {
     display: none;
   }
+
 }
 #section-22
 {
   display: flex;
   justify-content: space-evenly;
+}
+.imagen-fondo
+{
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+@media screen and (min-width: 550px) and (max-width: 991px) 
+{
+  .letras
+  {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+  }
+  .titulo22
+  {
+    font-size: 1.4rem;
+  }
+.letras h4
+{
+  font-size: 0.9rem;
+}
+
+}
+@media screen and (min-width: 990px) and (max-width: 1440px) 
+{
+  #submit {
+    width: 10vw;
+  }
+  .formulario2
+  {
+    width: 80%;
+    height: 90%;
+  }
 }

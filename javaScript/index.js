@@ -1,48 +1,41 @@
-//section 1
-const carta1 = document.getElementById(`section-11`);
+//section 1 
+const carta1 = document.getElementById(`section-11`)
 
-const eventosAmazing = eventoDatos.eventos;
+const eventosAmazing = eventoDatos.eventos
+const eventoAmazing = eventosAmazing[0]
 
-let eventosPasados = [];
-
-for (const evento of eventosAmazing) {
-  if (evento.date < eventoDatos.fechaActual) {
-    eventosPasados.push(evento);
-    console.log(evento);
+let crearArticle = ``
+for (let i = 0; i < 14; i++) {
+    crearArticle += crearMasArticle(eventosAmazing[i]);
   }
-}
 
-let crearArticle = "";
-for (let i = 0; i < 9; i++) {
-  crearArticle += crearMasArticle(eventosPasados[i]);
-}
 
-carta1.innerHTML = crearArticle;
+carta1.innerHTML = crearArticle
 
 function crearMasArticle(eventoAmazing) {
-  return `<div class="card bg-dark" style="width: 18rem">
-  <img src="${eventoAmazing.image}" class="cartafoto p-2" />
-  <div class="card-body">
-  <div class=cartatitulo>
-      <h5 class="card-title">${eventoAmazing.name}</h5>
-      <p class="card-text">
-         ${eventoAmazing.description}
-      </p>
-      </div>  
-      <div class="cardpriceandbutton">
-          <p>price: ${eventoAmazing.price}</p>
-          <a href="./details.html?nombre=${eventoAmazing.name}" class="btn btn-primary">Details</a>
-      </div>
-      
-  </div>
- </div>`;
+    return  `<div class="card bg-dark" style="width: 18rem">
+    <img src="${eventoAmazing.image}" class="cartafoto p-2" />
+    <div class="card-body">
+    <div class=cartatitulo>
+        <h5 class="card-title">${eventoAmazing.name}</h5>
+        <p class="card-text">
+           ${eventoAmazing.description}
+        </p>
+        </div>  
+        <div class="cardpriceandbutton">
+            <p>price: ${eventoAmazing.price}</p>
+            <a href="./pages/details.html?nombre=${eventoAmazing.name}" class="btn btn-primary">Details</a>
+        </div>
+        
+    </div>
+   </div>`
 }
 //hacer funcionar barra de busqueda
 const barraDeBusquedaValor = document.getElementById('search-input');
 
 barraDeBusquedaValor.addEventListener('input', () => {
   const  busquedaValor = barraDeBusquedaValor.value.toLowerCase();
-  const eventosFiltradosBusqueda = eventosPasados.filter((evento) => {
+  const  eventosFiltradosBusqueda = eventoDatos.eventos.filter((evento) => {
     return evento.name.toLowerCase().includes(busquedaValor) || evento.description.toLowerCase().includes(busquedaValor);
   });
   const carta1 = document.getElementById('section-11');
@@ -52,7 +45,7 @@ barraDeBusquedaValor.addEventListener('input', () => {
   }
 });
 
-//crear checkbox
+//checkboxes
 const checkboxContenedor = document.getElementById(`checkboxes`);
 const myset = new Set();
 let crearCheckboxes = ``;
@@ -73,6 +66,7 @@ function crearCheckbox(checkboxCategoria) {
     </label>`;
 }
 console.log(crearCheckbox)
+
 //hacer que funcionen los checkbox
 const checkboxes = document.querySelectorAll('input[type=checkbox][name=opciones]');
 
@@ -111,7 +105,7 @@ const actualizarEventosFiltrados = () => {
   const categoriasSeleccionadas = Array.from(checkboxes)
     .filter((checkbox) => checkbox.checked)
     .map((checkbox) => checkbox.value);
-  let eventosFiltrados = eventosPasados;
+  let eventosFiltrados = eventoDatos.eventos;
   if (busquedaValor) {
     eventosFiltrados = eventosFiltrados.filter((evento) => {
       return evento.name.toLowerCase().includes(busquedaValor) || evento.description.toLowerCase().includes(busquedaValor);
@@ -138,3 +132,32 @@ barraDeBusquedaValor.addEventListener('input', actualizarEventosFiltrados);
 checkboxes.forEach((checkbox) => {
   checkbox.addEventListener('change', actualizarEventosFiltrados);
 });
+
+//tener el contenedor
+//tener los datos
+//crear el article
+// agregar el article a la vista
+
+// imagen = image
+// tituloh5 = name
+// parrafo p = description
+// price p = price
+
+
+/* <div class = "section-1" id="section-11">
+<div class="card" style="width: 18rem">
+    <img src="./assets/img/Feria de comidas7.jpg" class="card-img-top w-100 p-2" alt="festival of food" />
+    <div class="card-body">
+        <h5 class="card-title">Festival of the collectivities</h5>
+        <p class="card-text">
+            Enjoy your favorite dishes from different countries in a unique
+            event for the whole family.
+        </p>
+        <div class="cardpriceandbutton">
+            <p>price: 5</p>
+            <a href="./pages/details.html" class="btn btn-primary">Details</a>
+        </div>
+    </div>
+</div>
+
+</div> */
