@@ -1,43 +1,32 @@
-//section 1
-const carta1 = document.getElementById(`section-11`);
+import { crearMasArticle, crearCheckbox } from "./module/funcionesPast.js";
 
-const eventosAmazing = eventoDatos.eventos;
-
-let eventosPasados = [];
-
-for (const evento of eventosAmazing) {
-  if (evento.date < eventoDatos.fechaActual) {
-    eventosPasados.push(evento);
-    console.log(evento);
-  }
-}
-
-let crearArticle = "";
-for (let i = 0; i < 9; i++) {
-  crearArticle += crearMasArticle(eventosPasados[i]);
-}
-
-carta1.innerHTML = crearArticle;
-
-function crearMasArticle(eventoAmazing) {
-  return `<div class="card bg-dark" style="width: 18rem">
-  <img src="${eventoAmazing.image}" class="cartafoto p-2" />
-  <div class="card-body">
-  <div class=cartatitulo>
-      <h5 class="card-title">${eventoAmazing.name}</h5>
-      <p class="card-text">
-         ${eventoAmazing.description}
-      </p>
-      </div>  
-      <div class="cardpriceandbutton">
-          <p>price: ${eventoAmazing.price}</p>
-          <a href="./details.html?nombre=${eventoAmazing.name}" class="btn btn-primary">Details</a>
-      </div>
-      
-  </div>
- </div>`;
-}
-//hacer funcionar barra de busqueda
+const url = 'https://mindhub-xj03.onrender.com/api/amazing';
+fetch(url)
+  .then(response => response.json())
+  .then(datos => 
+    {
+      let eventoDatos = datos;
+  //section 1
+ const carta1 = document.getElementById(`section-11`);
+ 
+ const eventosAmazing = eventoDatos.events;
+ 
+ let eventosPasados = [];
+ 
+ for (const evento of eventosAmazing) {
+   if (evento.date < eventoDatos.currentDate) {
+     eventosPasados.push(evento);
+     console.log(evento);
+   }
+ }
+ 
+ let crearArticle = "";
+ for (let i = 0; i < eventosPasados.length; i++) {
+   crearArticle += crearMasArticle(eventosPasados[i]);
+ }
+ 
+ carta1.innerHTML = crearArticle;
+ //hacer funcionar barra de busqueda
 const barraDeBusquedaValor = document.getElementById('search-input');
 
 barraDeBusquedaValor.addEventListener('input', () => {
@@ -51,7 +40,6 @@ barraDeBusquedaValor.addEventListener('input', () => {
     carta1.innerHTML += crearMasArticle( eventosFiltradosBusqueda[i]);
   }
 });
-
 //crear checkbox
 const checkboxContenedor = document.getElementById(`checkboxes`);
 const myset = new Set();
@@ -65,13 +53,7 @@ for (let i = 0; i < eventosAmazing.length; i++) {
 }
 checkboxContenedor.innerHTML = crearCheckboxes;
 
-function crearCheckbox(checkboxCategoria) {
-  return `
-    <label>
-      <input type="checkbox" name="opciones" value="${checkboxCategoria}" />
-      ${checkboxCategoria}
-    </label>`;
-}
+
 console.log(crearCheckbox)
 //hacer que funcionen los checkbox
 const checkboxes = document.querySelectorAll('input[type=checkbox][name=opciones]');
@@ -90,9 +72,9 @@ checkboxes.forEach((checkbox) => {
  
     let eventosFiltradosCheckbox;
     if (categoriasSeleccionadas.length === 0) {
-      eventosFiltradosCheckbox = eventoDatos.eventos;
+      eventosFiltradosCheckbox = eventoDatos.events;
     } else {
-      eventosFiltradosCheckbox = eventoDatos.eventos.filter((evento) => {
+      eventosFiltradosCheckbox = eventoDatos.events.filter((evento) => {
         return categoriasSeleccionadas.includes(evento.category);
       });
     }
@@ -137,4 +119,13 @@ barraDeBusquedaValor.addEventListener('input', actualizarEventosFiltrados);
 
 checkboxes.forEach((checkbox) => {
   checkbox.addEventListener('change', actualizarEventosFiltrados);
-});
+}); 
+    })
+
+  .catch(err => console.log(err));
+
+
+
+
+
+

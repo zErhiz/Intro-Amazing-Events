@@ -299,10 +299,12 @@ width: 50vw;
 .tableth1 {
   border: 2px solid black;
   width: 30vw;
+  text-align: center;
 }
 .tabletd1 {
   border: 2px solid black;
   height: 4vh;
+  text-align: center;
 }
 .caption2 {
   caption-side: top;
